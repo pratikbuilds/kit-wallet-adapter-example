@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { useWallets } from "@wallet-standard/react";
-import { WalletModal } from "./WalletModal";
-import { useWallet } from "../contexts/WalletContext";
+import { useWallet } from "@/contexts/WalletContext";
+import { WalletModal } from "./old/WalletModal";
+import { Button } from "./ui/button";
+import { WalletListModal } from "./WalletListModal";
 
-export function ConnectWalletButton() {
+export function ConnectWalletBtn() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const wallets = useWallets();
   const { isConnected } = useWallet();
@@ -18,13 +20,8 @@ export function ConnectWalletButton() {
 
   return (
     <>
-      <button
-        className="connect-wallet-button"
-        onClick={() => setIsModalOpen(true)}
-      >
-        Connect Wallet
-      </button>
-      <WalletModal
+      <Button onClick={() => setIsModalOpen(true)}>Connect Wallet</Button>
+      <WalletListModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
         wallets={solanaWallets}

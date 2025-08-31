@@ -4,7 +4,7 @@ import {
   type UiWallet,
 } from "@wallet-standard/react";
 import { useEffect } from "react";
-import { useWallet } from "../contexts/WalletContext";
+import { useWallet } from "../../contexts/WalletContext";
 
 interface WalletItemProps {
   wallet: UiWallet;

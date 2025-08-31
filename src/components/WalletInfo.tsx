@@ -1,4 +1,6 @@
-import { useWallet } from "../contexts/WalletContext";
+import { useWallet } from "@/contexts/WalletContext";
+import { Button } from "@/components/ui/button";
+import { LogOut, Wallet } from "lucide-react";
 
 export function WalletInfo() {
   const { account, wallet, isConnected, setConnectedWallet } = useWallet();
@@ -13,41 +15,31 @@ export function WalletInfo() {
     return `${pubkey.slice(0, 4)}...${pubkey.slice(-4)}`;
   };
 
-  // Get wallet name from the wallet object
-  const getWalletName = () => {
-    return wallet.name || "Connected Wallet";
-  };
-
   const handleDisconnect = () => {
     setConnectedWallet(null);
   };
 
   return (
-    <div className="wallet-info">
-      <div className="wallet-info-content">
-        <div className="wallet-info-details">
-          <div className="wallet-info-icon">
-            {wallet.icon ? (
-              <img
-                src={wallet.icon}
-                alt={getWalletName()}
-                className="wallet-icon"
-              />
-            ) : (
-              <div className="wallet-icon-placeholder">👛</div>
-            )}
-          </div>
-          <div className="wallet-info-text">
-            <div className="wallet-name">{getWalletName()}</div>
-            <div className="wallet-address">
-              {formatPublicKey(account.address)}
-            </div>
-          </div>
-        </div>
-        <button className="disconnect-button" onClick={handleDisconnect}>
-          Disconnect
-        </button>
+    <Button
+      variant="outline"
+      onClick={handleDisconnect}
+      className="h-10 px-3 bg-background hover:bg-accent/50 border-border group"
+    >
+      <div className="flex items-center space-x-2">
+        {wallet.icon ? (
+          <img
+            src={wallet.icon}
+            alt="Wallet"
+            className="w-5 h-5 rounded object-cover"
+          />
+        ) : (
+          <Wallet className="w-5 h-5 text-muted-foreground" />
+        )}
+        <span className="text-sm font-mono text-foreground">
+          {formatPublicKey(account.address)}
+        </span>
+        <LogOut className="w-4 h-4 text-muted-foreground group-hover:text-destructive transition-colors" />
       </div>
-    </div>
+    </Button>
   );
 }
