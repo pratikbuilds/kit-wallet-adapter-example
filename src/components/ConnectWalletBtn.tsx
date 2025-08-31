@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useWallets } from "@wallet-standard/react";
 import { useWallet } from "@/contexts/WalletContext";
-import { WalletModal } from "./old/WalletModal";
+
 import { Button } from "./ui/button";
 import { WalletListModal } from "./WalletListModal";
 

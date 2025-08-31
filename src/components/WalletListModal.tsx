@@ -3,7 +3,7 @@ import {
   useDisconnect,
   type UiWallet,
 } from "@wallet-standard/react";
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 import {
   Dialog,
   DialogContent,
