@@ -12,7 +12,8 @@ function App() {
   return (
     <>
       <h1>Kit Wallet Adapter</h1>
-      <div className="card">
+
+      <div className="flex flex-col gap-4 mt-2.5">
         <ConnectWalletButton />
         <WalletInfo />
         <ConnectWalletBtn />
